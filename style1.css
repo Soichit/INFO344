@@ -1,0 +1,31 @@
+
+body {
+	text-align: center;
+	font-size: 4vw;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input {
+	font-size: 4vw;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+img {
+	margin-top: 10vh;
+}
+
+form {
+	margin-top: 5vh;
+}
