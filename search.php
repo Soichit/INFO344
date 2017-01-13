@@ -40,7 +40,11 @@
 			return $this->Three_PT_A;
 		}
 		function getThree_PT_Pct() {
-			return $this->Three_PT_Pct;
+			if ($this->Three_PT_Pct == Null) {
+				return "N/A";
+			} else {
+				return $this->Three_PT_Pct;
+			}
 		}
 		function getFT_M() {
 			return $this->FT_M;
@@ -97,13 +101,10 @@
 
 	// Business logic that retrieves data from RDS based on user input
 	$myArray = [];
-	
 	if (!filter_input(INPUT_POST, "name", FILTER_DEFAULT)) {
-	    echo("Your search is not valid");
+	    echo("<h3>Your search is not valid</h3>");
 	}
 	$input = filter_input(INPUT_POST, "name", FILTER_DEFAULT);
-	//$input = $_POST["name"];
-
 
 	try {
 	    $query = $conn->prepare("SELECT * FROM PLAYERS1 WHERE Name LIKE  :input");
@@ -119,7 +120,7 @@
 
 	// check if query returns no results
 	if ($query->rowCount() == 0) {
-		echo "Sorry we couldn't find the player you're looking for";
+		echo "<h3>Sorry we couldn't find the player you're looking for</h3>";
 	} else {
 		$query->setFetchMode(PDO::FETCH_CLASS, 'Player');
 		foreach($query->fetchAll() as $row) {

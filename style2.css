@@ -8,6 +8,12 @@ h2, h4, h5 {
 	margin-top: 5px;
 }
 
+h3 {
+	color: gray;
+	margin-top: 20px;
+	text-align: center;
+}
+
 .clearfix {
 	border: 5px solid black;
 	border-radius: 10px;
