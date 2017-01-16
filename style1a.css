@@ -2,11 +2,16 @@
 body {
 	text-align: center;
 	font-size: 4vw;
+	margin: 0px;
 }
 
-table {
-	margin-left: auto;
-	margin-right: auto;
+header {
+	height: 20vw;
+	background-color: #072840;
+}
+
+form {
+	margin-top: 5vw;
 }
 
 input {
@@ -22,10 +27,14 @@ input[type=submit] {
     border-radius: 5px; 
 }
 
-img {
-	margin-top: 10vh;
+#logo {
+	margin-bottom: -0.5vw;
+	height: 4.5vw;
+	width: 10vw;
 }
 
-form {
-	margin-top: 5vh;
+#ball {
+	margin-top: 5vw;
+	height: 10vw;
+	width: 10vw;
 }
