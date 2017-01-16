@@ -3,7 +3,7 @@
     <head>
 	    <meta charset="UTF-8">
 	    <title>NBA</title>
-	    <link rel="stylesheet" type="text/css" href="style.css">
+	    <link rel="stylesheet" type="text/css" href="style2.css">
 	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	</head>
 
@@ -12,13 +12,33 @@
 			<img id='ball' src='http://pngimg.com/upload/basketball_PNG1101.png' />
 		</header>
 		
-		<form id='playerForm' action='search.php' method='post'>
+		<div id='playerForm' action='search.php' method='post'>
 		<!-- <form id='playerForm'> -->
 			<label>
 				<img id='logo' src='https://goodlogo.com/images/logos/national_basketball_association_nba_logo_2414.gif' />
-				<input type='text' name='player' autocomplete='off' placeholder='Enter Player Name' required minlength='3'/>
-				<input id='submit' type='submit' value='Search' />
+				<input id='search' type='text' name='player' autocomplete='off' placeholder='Enter Player Name' required/>
+				<!-- <input id='submit' type='submit' value='Search' /> -->
 			</label>
-		</form>
+		</div>
+		<div id="result"></div>
+
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#search").keyup(function(){
+                    var title=$("#search").val();
+                    //$("#result").html("<img alt='ajax search' src='ajax-loader.gif'/>");
+                    $.ajax({
+                        type:"post",
+                        url:"search.php",
+                        data:"title="+title,
+                        success:function(data){
+                            $("#result").html(data);
+                        }
+               	    });
+                });
+            });
+        </script>
 	</body>
 </html>

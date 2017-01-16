@@ -1,6 +1,6 @@
 
 body {
-	color: white;
+	/*color: white;*/
 	background-color: white;
 	margin: 0px;
 }
@@ -14,6 +14,10 @@ h3 {
 	color: gray;
 	margin-top: 20px;
 	text-align: center;
+}
+
+h5 {
+	display: inline-block;
 }
 
 .clearfix {
@@ -34,12 +38,14 @@ h3 {
 .box1 {
 	float: left;
 	margin-right: 20px;
+	display: inline-block;
 
 }
 
-.right {
-	/*float: left;*/
-}
+/*.right {
+	float: left;
+	margin-right: 20px;
+}*/
 
 
 /* Search bar and header */
@@ -70,6 +76,7 @@ input[type=submit] {
 
 table {
 	background-color: white;
+	display: inline-block;
 }
 
 #submit {
