@@ -1,55 +1,36 @@
-<!-- <html>
-<head>
-   <!-- Link your php/css file -->
-   <!-- <link rel="stylesheet" href="style3.css" media="screen">
-</head>
- -->
+
 
 <?php
 	require_once('player.php');
 
-	//user input form
-	// echo "<header>" .
-	// 		"<img id='ball' src='http://pngimg.com/upload/basketball_PNG1101.png' />" .
-	// 	"</header>" .
-		
-	// 	"<form action='' method='POST'>" .
-	// 		"<label>" .
-	// 			"<img id='logo' src='https://goodlogo.com/images/logos/national_basketball_association_nba_logo_2414.gif' />" .
-	// 			"<input type='text' name='player' autocomplete='off' placeholder='Enter Player Name' required minlength='3' />" .
-	// 			"<input id='submit' type='submit' value='Search' />" .
-	// 		"</label>" .
-	// 	"</form>";
-
+	// load index.html file
 	$html = file_get_contents('index.html');
 	echo $html;
 
-	
-
-	// Connect to RDS
-	$servername = "mydbinstance.cclthmosu4ny.us-west-2.rds.amazonaws.com";
-	$username = "info344user";
-	$password = "chingensai";
-
-	try {
-	    $conn = new PDO("mysql:host=$servername;dbname=import_csv", $username, $password);
-	    // set the PDO error mode to exception
-	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	    // echo "Connected successfully"; 
-	} catch (PDOException $e) {
-	    echo "Connection failed: " . $e->getMessage();
-	}
-
 
 	// Business logic that retrieves data from RDS based on user input
-	if (!isset($_POST["player"]) || empty($_POST["player"])) {
-		$conn = null;
-	} else{
+	if (isset($_POST["player"]) && !empty($_POST["player"])) {
+
+		// Connect to RDS
+		$servername = "mydbinstance.cclthmosu4ny.us-west-2.rds.amazonaws.com";
+		$username = "info344user";
+		$password = "chingensai";
+
+		try {
+		    $conn = new PDO("mysql:host=$servername;dbname=import_csv", $username, $password);
+		    // set the PDO error mode to exception
+		    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		    // echo "Connected successfully"; 
+		} catch (PDOException $e) {
+		    echo "Connection failed: " . $e->getMessage();
+		}
+
 		$myArray = [];
 		if (!filter_input(INPUT_POST, "player", FILTER_DEFAULT)) {
 	 	   echo("<h3>Your search is not valid</h3>");
 		}
 		$input = filter_input(INPUT_POST, "player", FILTER_DEFAULT);
+		$input = preg_replace('/\s+/', '', $input);
 
 		try {
 		    $query = $conn->prepare("SELECT * FROM PLAYERS1 WHERE Name LIKE  :input");
@@ -69,11 +50,13 @@
 		if ($query->rowCount() == 0) {
 			echo "<h3>No results found</h3>";
 		} else {
+			$count = 0;
 			$query->setFetchMode(PDO::FETCH_CLASS, 'Player');
 			foreach($query->fetchAll() as $row) {
 				array_push($myArray, $row);
+				$count++;
 			}
-
+			echo "<h3>" . $count . " results found</h3>";
 			// Presentation layer that inserts content into the user view
 			foreach($myArray as $player) {
 				echo "<div class='clearfix'>" .
