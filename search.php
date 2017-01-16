@@ -8,6 +8,8 @@
 	echo $html;
 
 
+
+
 	// Business logic that retrieves data from RDS based on user input
 	if (isset($_POST["player"]) && !empty($_POST["player"])) {
 
