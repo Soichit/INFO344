@@ -3,7 +3,8 @@
     <head>
 	    <meta charset="UTF-8">
 	    <title>NBA</title>
-	    <link rel="stylesheet" type="text/css" href="style1a.css">
+	    <link rel="stylesheet" type="text/css" href="style.css">
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	</head>
 
 	<body>
@@ -11,12 +12,34 @@
 			<img id='ball' src='http://pngimg.com/upload/basketball_PNG1101.png' />
 		</header>
 		
-		<form action='search.php' method='post'>
+		<form id='playerForm' action='search.php' method='post'>
+		<!-- <form id='playerForm'> -->
 			<label>
 				<img id='logo' src='https://goodlogo.com/images/logos/national_basketball_association_nba_logo_2414.gif' />
-				<input type='text' name='name' autocomplete='off' placeholder='Enter Player Name' required minlength='3' />
+				<input type='text' name='player' autocomplete='off' placeholder='Enter Player Name' required minlength='3'/>
 				<input id='submit' type='submit' value='Search' />
 			</label>
 		</form>
+
+<!-- 		<script>
+			function showHint(str) {
+
+			    if (str.length == 0) { 
+			        //document.getElementById("txtHint").innerHTML = "";
+			        return;
+			    } else {
+			    	console.log(str)
+			        var xmlhttp = new XMLHttpRequest();
+			        xmlhttp.onreadystatechange = function() {
+			            if (this.readyState == 4 && this.status == 200) {
+			                //document.getElementById("txtHint").innerHTML = this.responseText;
+			            }
+			        };
+			        xmlhttp.open("GET", "search.php?q=" + str, true);
+			        xmlhttp.send();
+			    }
+			}
+		</script>
+       -->
 	</body>
 </html>

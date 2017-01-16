@@ -46,7 +46,7 @@ header {
 	text-align: center;
 }
 
-form {
+#playerForm {
 	margin-top: 2vw;
 	margin-bottom: 5vw;
 	text-align: center;
@@ -67,6 +67,8 @@ input[type=submit] {
 
 #submit {
 	margin-left: 5px;
+	background-color: #072840;
+	color: white;
 }
 
 #logo {
