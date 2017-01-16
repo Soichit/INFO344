@@ -1,19 +1,7 @@
 
-<!-- <?php
-	 //$title=$_POST["title"];
-	 //echo $title;
- ?> -->
-
 
 <?php
 	require_once('player.php');
-
-	// load index.html file
-	// $html = file_get_contents('index.html');
-	// echo $html;
-
-
-
 
 	// Business logic that retrieves data from RDS based on user input
 	if (isset($_POST["title"]) && !empty($_POST["title"])) {
