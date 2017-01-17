@@ -39,13 +39,19 @@ h5 {
 	float: left;
 	margin-right: 20px;
 	display: inline-block;
-
 }
 
-/*.right {
+/*.playerImage, .contents {
 	float: left;
-	margin-right: 20px;
 }*/
+
+.playerImage {
+	width: 25vw;
+	height: 18vw;
+	/*border: 5px solid #072840;
+	background-color: white;*/
+}
+
 
 
 /* Search bar and header */

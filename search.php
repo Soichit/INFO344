@@ -54,10 +54,15 @@
 			echo "<h3>" . $count . " results found</h3>";
 			// Presentation layer that inserts content into the user view
 			foreach($myArray as $player) {
-				echo "<div class='clearfix'>" .
+				echo "<div class='clearfix'>";
+				//if ($player->getPicture() === "") {
+				// 	echo "<img class='playerImage' src=" . "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"  . " />";
+				// } else {
+				// 	echo "<img class='playerImage' src=" . $player->getPicture()  . "/>";
+				//}
+				echo "<div class='contents'>" .
 					"<h2>" . $player->getName() . "</h2>" .
 					"<h4>Team: " . $player->getTeam() . " | GP: " . $player->getGP() . " | Min: " . $player->getMin() . "</h4><hr />" .
-
 					"<span class='box1'>" .
 						"<h5>FG</h5><br />" .
 						"<table border='1'><tr><td>M</td><td>A</td><td>PCT</td></tr>" .
@@ -91,6 +96,7 @@
 						"<td>" . $player->getMisc_Blk() . "</td><td>" . $player->getMisc_PF() . "</td><td>" . $player->getMisc_PPG() . "</td>" .
 						"</tr></table>" .
 					"</span>" .
+					"</div>" .
 				"</div>";
 			}
 		}

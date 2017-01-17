@@ -158,6 +158,22 @@ class Player {
 			return $this->Misc_PPG;
 		}
 	}
+	// function getPicture() {
+	// 	if ($this->Name == Null) {
+	// 		return "";
+	// 	} else {
+	// 		$base_url = 'https://nba-players.herokuapp.com/players';
+	// 		$full_name = $this->Name;
+	// 		$pieces = explode(" ", $full_name);
+	// 		$target_url = 'https://nba-players.herokuapp.com/players/' . $pieces[1] . '/' . $pieces[0];
+	// 		$content = file_get_contents($target_url);
+	// 		if ($content === "Sorry, that player was not found. Please check the spelling.") {
+	// 			return "";
+	// 		} else {
+	// 			return $target_url;
+	// 		}
+	// 	}
+	// }
 }
 
 ?>
