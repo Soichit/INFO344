@@ -6,6 +6,9 @@ using System.Web.Services;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Microsoft.Azure; // Namespace for CloudConfigurationManager
+using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
+using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 
 
 namespace PA2
@@ -48,6 +51,9 @@ namespace PA2
                         //}
                         using (var memoryStream = new MemoryStream())
                         {
+                            //memorystream to string array
+                            //download to azure locally
+
                             blob.DownloadToStream(memoryStream);
                         }
                     }
