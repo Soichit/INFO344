@@ -1,0 +1,34 @@
+﻿body {
+    /*color: red;*/
+    text-align: center;
+    margin-top: 10vw;
+}
+
+#input {
+    width: 50%;
+    height: 3em;
+    line-height: 3em;
+}
+
+#submit {
+    height: 3em;
+    line-height: 3em;
+}
+
+input {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+img {
+    height: 10vw;
+}
+
+#dropdown {
+    border: 1px black solid;
+    text-align: left;
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+}

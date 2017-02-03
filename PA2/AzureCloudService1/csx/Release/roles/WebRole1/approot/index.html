@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="StyleSheet1.css">
+</head>
+
+<body>
+    <img src="http://i.imgur.com/7AriHtN.jpg" />
+    <div>
+        <input id="input" type="text" autocomplete="off">
+        <input id="submit" type="submit" value="Save Query">
+        <div id="dropdown"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var delay = (function(){
+                var timer = 0;
+
+                return function(callback, ms){
+                    clearTimeout (timer);
+                    timer = setTimeout(callback, ms);
+                };
+            })();
+
+            // AJAX call to retrieve suggestions when keyup is called
+            $("#input").keyup(function () {
+                    delay(function(){
+                        var input = $('#input').val().trim().toLowerCase();
+                        var checkedInput = input.replace(/ /g, "_");
+
+                        var url = "WebService1.asmx/SearchTrie";
+                        $.ajax({
+                            data: JSON.stringify({ input: checkedInput }),
+                            dataType: "json",
+                            url: url,
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (result) {
+                                console.log(result);
+                                if (result.d == "{}" && $('#input').val() != "") {
+                                    $("#dropdown").html("Can't find any results.");
+                                } else {
+                                    $("#dropdown").html("");
+                                    $.each(JSON.parse(result.d), function (key, value) {
+                                        $("#dropdown").append($("<div></div>").html(key + " - Save Count: " + value));
+                                    })
+                                }
+                            }
+                        });
+                    }, 500 );
+                });
+        });
+
+        // AJAX call to save count when user hits enter
+        $("#submit").click(function () {
+            var input = $('#input').val().trim().toLowerCase();
+            var url = "WebService1.asmx/saveUserSearch";
+            $.ajax({
+                data: JSON.stringify({ input: input }),
+                dataType: "json",
+                url: url,
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    $("#dropdown").html("Search query saved!");
+                }
+            });
+        })
+    </script>
+</body>
+</html>
