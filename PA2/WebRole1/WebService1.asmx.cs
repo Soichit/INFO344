@@ -26,9 +26,9 @@ namespace WebRole1
     {
 
         private static Trie trie = new Trie();
-        //private string filePath = Path.GetTempPath() + "\\wiki.txt";
-        private string filePath = "/Users/iGuest/documents/wiki-output.txt";
-        private int memoryCap = 2000; // change memory to 20
+        private string filePath = Path.GetTempPath() + "\\wiki.txt";
+        //private string filePath = "/Users/iGuest/documents/wiki-output.txt";
+        private int memoryCap = 20; // change memory to 20
 
         [WebMethod]
         public String downloadWiki()
@@ -90,7 +90,11 @@ namespace WebRole1
         [WebMethod]
         public String saveUserSearch(String input)
         {
-            trie.addUserSearch(input);
+            String check = trie.addUserSearch(input);
+            if (check == null)
+            {
+                return "Your input is misspelled";
+            }
             return "Search query saved!";
         }
 

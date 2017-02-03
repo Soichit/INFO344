@@ -8,18 +8,25 @@
 </head>
 
 <body>
-    <img src="http://i.imgur.com/7AriHtN.jpg" />
-    <div>
-        <input id="input" type="text" autocomplete="off">
-        <input id="submit" type="submit" value="Save Query">
-        <div id="dropdown"></div>
+    <div id="top">
+        <img src="http://i.imgur.com/crtYgrQ.png" /><br />
+        The misspelled words are shown in ' 's<br />
+        Click the save query button to increment that query's count<br />
     </div>
+    <br />
 
+    <div id="center">
+        <div id="left">
+            <input id="input" type="text" autocomplete="off">
+            <div id="dropdown"></div>
+        </div>
+        <input id="submit" type="submit" value="Save Query">
+    </div>
+    
     <script>
         $(document).ready(function () {
             var delay = (function(){
                 var timer = 0;
-
                 return function(callback, ms){
                     clearTimeout (timer);
                     timer = setTimeout(callback, ms);
@@ -31,7 +38,12 @@
                     delay(function(){
                         var input = $('#input').val().trim().toLowerCase();
                         var checkedInput = input.replace(/ /g, "_");
-
+                        if (input == "") {
+                            $("#dropdown").removeClass("border");
+                        } else {
+                            $("#dropdown").addClass("border");
+                        }
+                        
                         var url = "WebService1.asmx/SearchTrie";
                         $.ajax({
                             data: JSON.stringify({ input: checkedInput }),
@@ -40,35 +52,38 @@
                             type: "POST",
                             contentType: "application/json; charset=utf-8",
                             success: function (result) {
-                                console.log(result);
+                                //console.log(result);
                                 if (result.d == "{}" && $('#input').val() != "") {
                                     $("#dropdown").html("Can't find any results.");
                                 } else {
                                     $("#dropdown").html("");
                                     $.each(JSON.parse(result.d), function (key, value) {
-                                        $("#dropdown").append($("<div></div>").html(key + " - Save Count: " + value));
+                                        $("#dropdown").append($("<div></div>").html(key + "<span>Save Count: " + value + "</span>"));
                                     })
                                 }
                             }
                         });
                     }, 500 );
-                });
+             });
         });
 
         // AJAX call to save count when user hits enter
         $("#submit").click(function () {
             var input = $('#input').val().trim().toLowerCase();
-            var url = "WebService1.asmx/saveUserSearch";
-            $.ajax({
-                data: JSON.stringify({ input: input }),
-                dataType: "json",
-                url: url,
-                type: "POST",
-                contentType: "application/json; charset=utf-8",
-                success: function (result) {
-                    $("#dropdown").html("Search query saved!");
-                }
-            });
+            if (input != "") {
+                var url = "WebService1.asmx/saveUserSearch";
+                $.ajax({
+                    data: JSON.stringify({ input: input }),
+                    dataType: "json",
+                    url: url,
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (result) {
+                        console.log(result);
+                        $("#dropdown").html(result.d);
+                    }
+                });
+            }
         })
     </script>
 </body>
