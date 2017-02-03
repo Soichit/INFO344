@@ -34,45 +34,59 @@ namespace WebRole1
 
         private String rearrange(TrieNode current, String tempWord)
         {
-            current.HybridList.Add(tempWord);
-            if (current.HybridList.Count <= _hybridCapacity)
+            // if parent node, then pass on string
+            if (current.Dict.Count > 0)
             {
-                return "done";
+                char ch = tempWord[0];
+                TrieNode node;
+
+                //check that first letter is in the dictionary key
+                if (current.Dict.ContainsKey(ch))
+                {
+                    //if it does, pass that word into that node
+                    node = current.Dict[ch];
+                }
+                else
+                {
+                    //if it doesn't, create a new node with that letter and add the rest of the letters into the hybrid
+                    node = new TrieNode();
+                    current.Dict.Add(ch, node);
+                }
+                if (tempWord.Length == 1)
+                {
+                    node.SetEndOfWord(true);
+                }
+
+                if (tempWord.Length >= 2)
+                {
+                    rearrange(node, tempWord.Substring(1, tempWord.Length - 1));
+                }
             }
-            else
+            //else if child, then add to list
+            else if (current.Dict.Count == 0)
+            {
+                current.HybridList.Add(tempWord);
+            }
+            // else if child node reaches capacity, then rearrange
+            else if (current.HybridList.Count >= _hybridCapacity && current.Dict.Count == 0)
             {
                 foreach (String item in current.HybridList)
                 {
-                    //get first letter in item
-                    char ch = item[0];
-                    TrieNode node;
-
-                    //check that first letter is in the dictionary key
-                    if (current.Dict.ContainsKey(ch))
-                    {
-                        //if it does, pass that word into that node
-                        node = current.Dict[ch];
-                    }
-                    else
-                    {
-                        //if it doesn't, create a new node with that letter and add the rest of the letters into the hybrid
-                        node = new TrieNode();
-                        current.Dict.Add(ch, node);
-                    }
-                    //if it's the end of the word
                     if (item.Length == 1)
                     {
-                        node.SetEndOfWord(true);
+                        current.SetEndOfWord(true);
                     }
 
                     if (item.Length >= 2)
                     {
-                        rearrange(node, item.Substring(1, item.Length - 1));
+                        rearrange(current, tempWord.Substring(1, tempWord.Length - 1));
                     }
+
                 }
                 current.HybridList.Clear();
                 return "done";
             }
+            return "done";
         }
 
         public Dictionary<String, int> search(String input)

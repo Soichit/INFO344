@@ -5,12 +5,13 @@
 }
 
 #input {
-    width: 50%;
+    width: 50vw;
     height: 3em;
     line-height: 3em;
 }
 
 #submit {
+    width: 10vw;
     height: 3em;
     line-height: 3em;
 }
