@@ -34,7 +34,10 @@ namespace WebRole1
 
         private String rearrange(TrieNode current, String tempWord)
         {
-            // if parent node, then pass on string
+            if (tempWord.Length == 0)
+            {
+                return "done";
+            }
             char ch = tempWord[0];
             TrieNode node;
 
@@ -48,25 +51,51 @@ namespace WebRole1
             {
                 // if it doesn't, create a new node with that letter and add the rest of the letters into the hybrid
                 node = new TrieNode();
-                current.Dict.Add(ch, node);
             }
             if (tempWord.Length == 1)
             {
                 node.SetEndOfWord(true);
             }
 
-            if (tempWord.Length >= 2)
+            // if parent node, then pass on string
+            if (current.Dict.Count > 0 && tempWord.Length >= 2)
             {
+                if (!current.Dict.ContainsKey(ch))
+                {
+                    current.Dict.Add(ch, node);
+                }
                 rearrange(node, tempWord.Substring(1, tempWord.Length - 1));
             }
+            // if child node, 
             else if (current.Dict.Count == 0)
             {
                 current.HybridList.Add(tempWord);
                 // if child node reaches capacity, then rearrange
-                if (current.HybridList.Count >= _hybridCapacity) {
+                if (current.HybridList.Count > _hybridCapacity) {
                     foreach (String item in current.HybridList)
                     {
-                        rearrange(current, item.Substring(1, item.Length - 1));
+                        ch = item[0];
+                        // check that first letter is in the dictionary key
+                        if (current.Dict.ContainsKey(ch))
+                        {
+                            // if it does, pass that word into that node
+                            node = current.Dict[ch];
+                        }
+                        else
+                        {
+                            // if it doesn't, create a new node with that letter and add the rest of the letters into the hybrid
+                            node = new TrieNode();
+                        }
+                        if (item.Length == 1)
+                        {
+                            node.SetEndOfWord(true);
+                        }
+
+                        if (!current.Dict.ContainsKey(ch))
+                        {
+                            current.Dict.Add(ch, node);
+                        }
+                        rearrange(node, item.Substring(1, item.Length - 1));
                     }
                     current.HybridList.Clear();
                     return "done";
@@ -90,7 +119,10 @@ namespace WebRole1
             {
                 String processedWord = word.Replace('_', ' ');
                 int count = userSearches.ContainsKey(processedWord) ? userSearches[processedWord] : 0;
-                countResult.Add(processedWord, count);
+                if (!countResult.ContainsKey(processedWord))
+                {
+                    countResult.Add(processedWord, count);
+                }
             }
             var sortedDict = from entry in countResult orderby entry.Value descending select entry;
             var result2 = sortedDict.ToDictionary(pair => pair.Key, pair => pair.Value);
@@ -144,7 +176,7 @@ namespace WebRole1
 
         private List<String> searchSuggestions(TrieNode current, String tempWord, String input, List<String> result)
         {
-            if (result.Count == _searchResults)
+            if (result.Count >= _searchResults)
             {
                 return result;
             }
@@ -153,12 +185,13 @@ namespace WebRole1
                 TrieNode node = current;
                 if (current.EndOfWord)
                 {
-                    if (result.Count < _searchResults)
+                    if (!result.Exists(x => x == tempWord))
                     {
-                        if (!result.Exists(x => x == tempWord))
-                        {
-                            result.Add(tempWord);
-                        }
+                        result.Add(tempWord);
+                    }
+                    if (result.Count >= _searchResults)
+                    {
+                        return result;
                     }
                 }
 
@@ -167,7 +200,7 @@ namespace WebRole1
                     char ch = item.Key;
                     TrieNode nextNode = item.Value;
                     result = searchSuggestions(nextNode, tempWord + ch, input, result);
-                    if (result.Count == _searchResults)
+                    if (result.Count >= _searchResults)
                     {
                         return result;
                     }
@@ -179,7 +212,7 @@ namespace WebRole1
                     {
                         result.Add(tempWord + word);
                     }
-                    if (result.Count == _searchResults)
+                    if (result.Count >= _searchResults)
                     {
                         return result;
                     }
@@ -245,7 +278,7 @@ namespace WebRole1
                     {
                         if (!result.Exists(x => x == addedWord))
                         {
-                            result.Add(addedWord);
+                            result.Add("'" + tempWord + "'");
                         }
                         if (result.Count == _searchResults)
                         {

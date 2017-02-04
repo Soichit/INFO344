@@ -40,6 +40,7 @@
                         var checkedInput = input.replace(/ /g, "_");
                         if (input == "") {
                             $("#dropdown").removeClass("border");
+                            $("#dropdown").html("");
                         } else {
                             $("#dropdown").addClass("border");
                         }
@@ -52,7 +53,8 @@
                             type: "POST",
                             contentType: "application/json; charset=utf-8",
                             success: function (result) {
-                                //console.log(result);
+                                console.log(result.d);
+
                                 if (result.d == "{}" && $('#input').val() != "") {
                                     $("#dropdown").html("Can't find any results.");
                                 } else {

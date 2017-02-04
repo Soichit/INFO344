@@ -1,17 +1,17 @@
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:45 PM] Emulator config file set to C:\Users\iGuest\Documents\cloud-azure\AzureCloudService1\csx\Debug\roles\WebRole1\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:45 PM] DiagnosticsStoreRootPath set to: C:\Users\iGuest\AppData\Local\dftmp\Resources\13197c33-13b5-44b8-af78-9daf56b8edae
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:45 PM] Loading config file: C:\Users\iGuest\Documents\cloud-azure\AzureCloudService1\csx\Debug\roles\WebRole1\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:45 PM] Config file to read: C:\Users\iGuest\Documents\cloud-azure\AzureCloudService1\csx\Debug\roles\WebRole1\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:45 PM] Checking VM Type
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:45 PM] Emulator config file set to C:\Users\iGuest\Documents\cloud-azure\AzureCloudService1\csx\Debug\roles\WebRole1\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:45 PM] Extension set to Emulator Mode
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:45 PM] Reading XML configuration file
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:45 PM] Bypassing private config decryption
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:45 PM] Stopping the running plugin, if any
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:46 PM] No DiagnosticsPlugin is running.
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:46 PM] Killing any DiagnosticsPlugin that might remain.
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:46 PM] Killing any MonAgentHost that might remain.
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:46 PM] Diagnostics plugin stopped successfully
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:07:46 PM] Resetting DiagnosticPlugin
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:08:58 PM] DiagnosticsPlugin launched successfully with new configuration
-DiagnosticsPluginLauncher.exe Information: 0 : [2/3/2017 11:08:58 PM] DiagnosticPlugin exited with code 0
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:44 AM] Emulator config file set to C:\Users\iGuest\Documents\cloud-azure\AzureCloudService1\csx\Debug\roles\WebRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:44 AM] DiagnosticsStoreRootPath set to: C:\Users\iGuest\AppData\Local\dftmp\Resources\75626add-ff26-4164-a328-300a507da079
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:44 AM] Loading config file: C:\Users\iGuest\Documents\cloud-azure\AzureCloudService1\csx\Debug\roles\WebRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:44 AM] Config file to read: C:\Users\iGuest\Documents\cloud-azure\AzureCloudService1\csx\Debug\roles\WebRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:44 AM] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:44 AM] Emulator config file set to C:\Users\iGuest\Documents\cloud-azure\AzureCloudService1\csx\Debug\roles\WebRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:44 AM] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:44 AM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:44 AM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:44 AM] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:45 AM] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:45 AM] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:45 AM] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:46 AM] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:15:46 AM] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:16:59 AM] DiagnosticsPlugin launched successfully with new configuration
+DiagnosticsPluginLauncher.exe Information: 0 : [2/4/2017 2:16:59 AM] DiagnosticPlugin exited with code 0
