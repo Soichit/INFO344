@@ -10,9 +10,11 @@
 <body>
     <div id="top">
         <h1>Dashboard</h1>
+        <h3>Click Stop and Start again to restart all data</h3>
+        <h3>Hit start to crawl CNN.com and BleacherReport.com</h3>
         <button id="start">Start</button>
         <button id="stop">Stop</button>
-        <button id="clear">Clear</button>
+        <!--<button id="clear">Clear</button>-->
         <button id="update">Update Stats</button>
         <p>State: <span id="state"></span></p>
         <p>Memory: <span id="mem"></span></p>
@@ -23,6 +25,9 @@
         
         <p>Last 10 URLs Crawled: <span id="ul-label"></span></p>
         <ul id="ul"></ul>
+
+        <p>Last 10 Errors: <span id="errors-label"></span></p>
+        <ul id="errors"></ul>
     </div>
 
     <script>
@@ -74,8 +79,37 @@
                                 $("#ul").append($("<li>").text(item));
                             });
                         }
+                        showErrors();
                     }
                 });
+            }
+
+            function showErrors() {
+                var url = "WebService1.asmx/getErrors";
+                $.ajax({
+                    data: JSON.stringify(),
+                    dataType: "json",
+                    url: url,
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (result) {
+                        console.log(result.d);
+                        var obj = JSON.parse(result.d)[0];
+                        console.log(obj);
+                        if (obj == undefined) {
+                            $("#errors-label").html("None");
+                        } else {
+                            $("#errors-label").html("");
+                            //lastTenArray.forEach(function (item) {
+                            //    $("#errors-label").append($("<li>").text(item));
+                            //});
+                        }
+                    }, 
+                }).fail(function (e) {
+                    console.log("error");
+                    console.log(e);
+                })
+                ;
             }
 
             function start() {

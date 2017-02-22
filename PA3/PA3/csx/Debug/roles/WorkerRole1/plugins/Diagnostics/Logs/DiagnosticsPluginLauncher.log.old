@@ -1,0 +1,17 @@
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:33 AM] Emulator config file set to C:\Users\iGuest\Documents\crawler\PA3\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:33 AM] DiagnosticsStoreRootPath set to: C:\Users\iGuest\AppData\Local\dftmp\Resources\350209e9-f289-4cd8-9b58-e5109299bab8
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:33 AM] Loading config file: C:\Users\iGuest\Documents\crawler\PA3\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:33 AM] Config file to read: C:\Users\iGuest\Documents\crawler\PA3\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:33 AM] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:33 AM] Emulator config file set to C:\Users\iGuest\Documents\crawler\PA3\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:33 AM] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:33 AM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:33 AM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:33 AM] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:35 AM] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:35 AM] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:37 AM] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:37 AM] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:18:37 AM] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Error: 0 : [2/22/2017 6:19:39 AM] DiagnosticsPlugin launch failed with exit code -1
+DiagnosticsPluginLauncher.exe Information: 0 : [2/22/2017 6:19:39 AM] DiagnosticPlugin exited with code -1
